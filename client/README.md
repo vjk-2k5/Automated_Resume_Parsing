@@ -1,29 +1,53 @@
-# Create T3 App
+# Next.js & NextUI Template
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+This is a template for creating applications using Next.js 14 (app directory) and NextUI (v2).
 
-## What's next? How do I make an app with this?
+[Try it on CodeSandbox](https://githubbox.com/nextui-org/next-app-template)
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+## Technologies Used
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+- [Next.js 14](https://nextjs.org/docs/getting-started)
+- [NextUI v2](https://nextui.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Tailwind Variants](https://tailwind-variants.org)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [next-themes](https://github.com/pacocoursey/next-themes)
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+## How to Use
 
-## Learn More
+### Use the template with create-next-app
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+To create a new project based on this template using `create-next-app`, run the following command:
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+```bash
+npx create-next-app -e https://github.com/nextui-org/next-app-template
+```
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+### Install dependencies
 
-## How do I deploy this?
+You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+```bash
+npm install
+```
+
+### Run the development server
+
+```bash
+npm run dev
+```
+
+### Setup pnpm (optional)
+
+If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
+
+```bash
+public-hoist-pattern[]=*@nextui-org/*
+```
+
+After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
+
+## License
+
+Licensed under the [MIT license](https://github.com/nextui-org/next-app-template/blob/main/LICENSE).
