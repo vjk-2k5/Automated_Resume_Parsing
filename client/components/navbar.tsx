@@ -34,7 +34,7 @@ export const Navbar = () => {
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-1" href="/">
             <Logo />
-            <p className="font-bold text-inherit">ACME</p>
+            <p className="font-bold text-inherit">Resume Analyser</p>
           </NextLink>
         </NavbarBrand>
         <ul className="hidden lg:flex gap-4 justify-start ml-2">
@@ -74,6 +74,24 @@ export const Navbar = () => {
               Blog
             </NextLink>
           </NavbarItem>
+          <NavbarItem>
+            <NextLink
+              className={clsx(linkStyles({ color: "foreground" }))}
+              color="foreground"
+              href="/about"
+            >
+              About
+            </NextLink>
+          </NavbarItem>
+          <NavbarItem>
+            <NextLink
+              className={clsx(linkStyles({ color: "foreground" }))}
+              color="foreground"
+              href="/settings"
+            >
+              Settings
+            </NextLink>
+          </NavbarItem>
         </ul>
       </NavbarContent>
 
@@ -94,7 +112,7 @@ export const Navbar = () => {
           <ThemeSwitch />
         </NavbarItem>
         <NavbarItem className="hidden md:flex">
-          <User     
+          <User      
             name="John Doe"
             description="Manager"
           />
@@ -141,6 +159,22 @@ export const Navbar = () => {
               href="/blog"
             >
               Blog
+            </Link>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <Link
+              color="foreground"
+              href="/about"
+            >
+              About
+            </Link>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <Link
+              color="foreground"
+ href="/settings"
+            >
+              Settings
             </Link>
           </NavbarMenuItem>
         </div>
