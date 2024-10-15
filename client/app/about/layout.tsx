@@ -24,9 +24,9 @@ export default function AboutLayout({
   }) {
     return (
       <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-      <div className="relative flex flex-col h-screen">
+      <div >
         <Navbar />
-        <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
+        <main >
           {children}
         </main>
       </div>
