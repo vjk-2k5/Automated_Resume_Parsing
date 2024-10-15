@@ -11,7 +11,7 @@ import {
 } from '@nextui-org/table';
 import { Input, Pagination, Spacer, Button, Divider, Dropdown } from '@nextui-org/react';
 import { DropdownMenu ,DropdownItem , DropdownTrigger } from '@nextui-org/dropdown';
-
+import { TableCellsIcon } from '@heroicons/react/24/outline';
 // Sample Data (25 entries)
 const members = [
   { name: 'Alice Johnson', skills: 'JavaScript, React', exp: '3 years', prevCompany: 'TechCorp', designation: 'Frontend Developer' },
@@ -95,7 +95,7 @@ export function TeamTable() {
 
         <Dropdown>
           <DropdownTrigger flat size="sm">
-            <Button>Rows per Page</Button></DropdownTrigger>
+          <Button>☰</Button></DropdownTrigger>
           <DropdownMenu
             aria-label="Select number of rows"
             selectionMode="single"

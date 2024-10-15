@@ -82,7 +82,7 @@ export default function Component() {
       </div>
 
       {/* Form to handle file upload and user input */}
-      <form onSubmit={handleSubmit} className="relative flex flex-col mb-20">
+      <form onSubmit={handleSubmit} className="relative flex flex-col mb-16">
         <Textarea
           id="message"
           placeholder="Paste your resume text here..."
