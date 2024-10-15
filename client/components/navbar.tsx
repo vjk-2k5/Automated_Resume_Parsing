@@ -69,15 +69,6 @@ export const Navbar = () => {
             <NextLink
               className={clsx(linkStyles({ color: "foreground" }))}
               color="foreground"
-              href="/blog"
-            >
-              Blog
-            </NextLink>
-          </NavbarItem>
-          <NavbarItem>
-            <NextLink
-              className={clsx(linkStyles({ color: "foreground" }))}
-              color="foreground"
               href="/about"
             >
               About
@@ -151,14 +142,6 @@ export const Navbar = () => {
               href="/filter"
             >
               Filter
-            </Link>
-          </NavbarMenuItem>
-          <NavbarMenuItem>
-            <Link
-              color="foreground"
-              href="/blog"
-            >
-              Blog
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
