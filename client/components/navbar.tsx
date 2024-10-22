@@ -32,7 +32,7 @@ export const Navbar = () => {
     >
       <NavbarContent className="basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <NextLink className="flex justify-start items-center gap-1" href="/">
+          <NextLink className="flex justify-start items-center gap-1" href="/home">
             <Logo />
             <p className="font-bold text-inherit">Resume Analyser</p>
           </NextLink>
@@ -42,7 +42,7 @@ export const Navbar = () => {
             <NextLink
               className={clsx(linkStyles({ color: "foreground" }))}
               color="foreground"
-              href="/"
+              href="/home"
             >
               Home
             </NextLink>
@@ -123,7 +123,7 @@ export const Navbar = () => {
           <NavbarMenuItem>
             <Link
               color="foreground"
-              href="/"
+              href="/home"
             >
               Home
             </Link>

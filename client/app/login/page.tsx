@@ -1,5 +1,6 @@
 'use client';
 import Link from "next/link";
+import { useRouter } from 'next/navigation'; // Correct import for useRouter
 import { Button, Input, Spacer } from "@nextui-org/react"; // Importing Button, Input, and Spacer from Next UI
 import {
   Card,
@@ -15,6 +16,14 @@ export const description =
   "A login form with email and password. There's an option to login with Google and a link to sign up if you don't have an account.";
 
 export default function LoginForm() {
+  const router = useRouter();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    // Perform login logic here
+    router.push('/home');
+  };
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-[url('/image.jpg')] bg-cover bg-center">
       <Card className="mx-auto max-w-md bg-black bg-opacity-0 p-6 rounded-lg shadow-lg">
@@ -22,7 +31,7 @@ export default function LoginForm() {
           <h2 className={title({ color: "green" })}>Resume Parser</h2>
         </CardHeader>
         <CardBody>
-          <form className="grid gap-4">
+          <form className="grid gap-4" onSubmit={handleLogin}>
             <div className="grid gap-3">
               <Input
                 id="email"
@@ -79,15 +88,6 @@ export default function LoginForm() {
             >
               <FaGoogle className="mr-2" />
               Login with Google
-            </Button>
-            <Button
-              type="button"
-              className="mt-2 border border-white-500 flex items-center justify-center"
-              color="gradient"
-              auto
-            >
-              <FaLinkedin className="mr-2" />
-              Login with LinkedIn
             </Button>
           </form>
         </CardBody>
