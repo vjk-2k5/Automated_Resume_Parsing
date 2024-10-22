@@ -1,76 +1,103 @@
-"use client";
+'use client';
 import Link from "next/link";
-import { Button } from "@nextui-org/react"; // Importing Button from Next UI
+import { Button, Input, Spacer } from "@nextui-org/react"; // Importing Button, Input, and Spacer from Next UI
 import {
   Card,
   CardHeader,
   CardBody,
   CardFooter,
 } from "@nextui-org/card"; // Importing Card components from Next UI
-import { Input } from "@nextui-org/react"; // Importing Input from Next UI
-import { GithubIcon } from "@/components/icons"; // Adjust the import path as necessary
+import { FaGoogle, FaLinkedin } from "react-icons/fa"; // Importing Google and LinkedIn icons from react-icons
+import { GithubIcon } from "@/components/icons"; // Importing GithubIcon from the correct path
+import { title } from "@/components/primitives";
 
 export const description =
   "A login form with email and password. There's an option to login with Google and a link to sign up if you don't have an account.";
 
 export default function LoginForm() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-900 to-black">
-      <Card className="mx-auto max-w-sm bg-transparent">
-        <CardHeader>
-          <h2 className="text-2xl text-green-500">Resume Parser</h2>
-          <p className="text-gray-400">
-            Enter your email below to login to your account
-          </p>
+    <div className="flex items-center justify-center min-h-screen bg-[url('/image.jpg')] bg-cover bg-center">
+      <Card className="mx-auto max-w-md bg-black bg-opacity-0 p-6 rounded-lg shadow-lg">
+        <CardHeader className="text-center">
+          <h2 className={title({ color: "green" })}>Resume Parser</h2>
         </CardHeader>
         <CardBody>
           <form className="grid gap-4">
-            <div className="grid gap-2">
+            <div className="grid gap-3">
               <Input
                 id="email"
                 type="email"
-                placeholder="Email"
-                required
+                label="Email"
+                variant="bordered"
                 fullWidth
+                clearable
+                bordered
+                required
+                animated
+                className="bg-transparent"
               />
-            </div>
-            <div className="grid gap-2">
-              <div className="flex items-center justify-between">
-                <span className="text-gray-400">Password</span>
-                <Link
-                  href="#"
-                  className="text-sm underline text-gray-400 hover:text-green-500"
-                >
-                  Forgot your password?
-                </Link>
-              </div>
               <Input
                 id="password"
                 type="password"
-                placeholder="Password"
-                required
+                label="Password"
+                variant="bordered"
                 fullWidth
+                clearable
+                bordered
+                required
+                animated
+                className="bg-transparent"
               />
             </div>
-            <Button type="submit" className="w-full bg-blue-500 hover:bg-blue-600">
+            <Button 
+              type="submit" 
+              className="mt-3 border border-white-500" 
+              color="gradient" 
+              auto
+            >
               Login
             </Button>
-            <Button variant="outline" className="w-full flex items-center justify-center">
+            <div className="flex items-center my-3">
+              <hr className="flex-grow border-t border-gray-500" />
+              <span className="mx-2 text-gray-400">OR</span>
+              <hr className="flex-grow border-t border-gray-500" />
+            </div>
+            <Button
+              type="button"
+              className="mt-2 border border-white-500 flex items-center justify-center"
+              color="gradient"
+              auto
+            >
+              <GithubIcon className="mr-2" />
+              Login with GitHub
+            </Button>
+            <Button
+              type="button"
+              className="mt-2 border border-white-500 flex items-center justify-center"
+              color="gradient"
+              auto
+            >
+              <FaGoogle className="mr-2" />
               Login with Google
             </Button>
-            <Button variant="outline" className="w-full flex items-center justify-center">
-              <GithubIcon className="w-5 h-5 mr-2" />
-              Login with GitHub
+            <Button
+              type="button"
+              className="mt-2 border border-white-500 flex items-center justify-center"
+              color="gradient"
+              auto
+            >
+              <FaLinkedin className="mr-2" />
+              Login with LinkedIn
             </Button>
           </form>
         </CardBody>
-        <CardFooter>
-          <div className="mt-4 text-center text-sm text-gray-400">
-            Don&apos;t have an account?{" "}
-            <Link href="#" className="underline text-green-500">
-              Sign up
+        <CardFooter className="text-center">
+          <p className="text-gray-400">
+            Don't have an account?{" "}
+            <Link href="/signup" legacyBehavior>
+              <a className="text-purple-300">Sign up</a>
             </Link>
-          </div>
+          </p>
         </CardFooter>
       </Card>
     </div>

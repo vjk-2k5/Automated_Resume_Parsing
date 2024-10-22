@@ -16,21 +16,18 @@ export const viewport: Viewport = {
   ],
 };
 
-
 export default function LoginLayout({
-    children,
-  }: {
-    children: React.ReactNode;
-  }) {
-    return (
-      <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
       <div className="relative flex flex-col h-screen">
         <main>
           {children}
         </main>
       </div>
     </Providers>
-    );
-  }
-  
-  
+  );
+}
