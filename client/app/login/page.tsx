@@ -1,6 +1,7 @@
 'use client';
 import Link from "next/link";
 import { useRouter } from 'next/navigation'; // Correct import for useRouter
+import { useState } from "react";
 import { Button, Input, Spacer } from "@nextui-org/react"; // Importing Button, Input, and Spacer from Next UI
 import {
   Card,
@@ -17,11 +18,34 @@ export const description =
 
 export default function LoginForm() {
   const router = useRouter();
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
 
-  const handleLogin = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [id]: value }));
+  };
+
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Perform login logic here
-    router.push('/home');
+
+    const response = await fetch('http://localhost:5000/api/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      alert('Login successful');
+      router.push('/home');
+    } else {
+      const errorData = await response.json();
+      alert(errorData.message || 'Error logging in');
+    }
   };
 
   return (
@@ -44,6 +68,8 @@ export default function LoginForm() {
                 required
                 animated
                 className="bg-transparent"
+                value={formData.email}
+                onChange={handleChange}
               />
               <Input
                 id="password"
@@ -56,6 +82,8 @@ export default function LoginForm() {
                 required
                 animated
                 className="bg-transparent"
+                value={formData.password}
+                onChange={handleChange}
               />
             </div>
             <Button 
