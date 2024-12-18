@@ -1,5 +1,6 @@
 'use client';
 import Link from "next/link";
+import { useState } from "react";
 import { Button, Input, Spacer } from "@nextui-org/react"; // Importing Button, Input, and Spacer from Next UI
 import {
   Card,
@@ -15,6 +16,43 @@ export const description =
   "A sign-up form with first name, last name, email, password, and confirm password. There's an option to sign up with Google and GitHub.";
 
 export default function SignUpForm() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [id]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (formData.password !== formData.confirmPassword) {
+      alert('Passwords do not match');
+      return;
+    }
+
+    const response = await fetch('http://localhost:5000/api/auth/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      alert('User created successfully');
+    } else {
+      const errorData = await response.json();
+      alert(errorData.msg || 'Error creating user');
+    }
+  };
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-[url('/image.jpg')] bg-cover bg-center">
       <Card className="mx-auto max-w-md bg-black bg-opacity-0 p-6 rounded-lg shadow-lg">
@@ -22,10 +60,10 @@ export default function SignUpForm() {
           <h2 className={title({ color: "green" })}>Resume Parser</h2>
         </CardHeader>
         <CardBody>
-          <form className="grid gap-4">
+          <form className="grid gap-4" onSubmit={handleSubmit}>
             <div className="grid grid-cols-2 gap-3">
               <Input
-                id="first-name"
+                id="firstName"
                 type="text"
                 label="First Name"
                 variant="bordered"
@@ -35,9 +73,11 @@ export default function SignUpForm() {
                 required
                 animated
                 className="bg-transparent"
+                value={formData.firstName}
+                onChange={handleChange}
               />
               <Input
-                id="last-name"
+                id="lastName"
                 type="text"
                 label="Last Name"
                 variant="bordered"
@@ -47,6 +87,8 @@ export default function SignUpForm() {
                 required
                 animated
                 className="bg-transparent"
+                value={formData.lastName}
+                onChange={handleChange}
               />
             </div>
             <Input
@@ -60,6 +102,8 @@ export default function SignUpForm() {
               required
               animated
               className="bg-transparent"
+              value={formData.email}
+              onChange={handleChange}
             />
             <Input
               id="password"
@@ -72,9 +116,11 @@ export default function SignUpForm() {
               required
               animated
               className="bg-transparent"
+              value={formData.password}
+              onChange={handleChange}
             />
             <Input
-              id="confirm-password"
+              id="confirmPassword"
               type="password"
               label="Confirm Password"
               variant="bordered"
@@ -84,6 +130,8 @@ export default function SignUpForm() {
               required
               animated
               className="bg-transparent"
+              value={formData.confirmPassword}
+              onChange={handleChange}
             />
             <Button 
               type="submit" 
