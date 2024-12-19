@@ -24,11 +24,12 @@ export const uploadResume = async (req: Request, res: Response): Promise<void> =
 
       if (error) {
         console.error(`Error executing script: ${stderr}`);
-        res.status(500).json({ message: 'Error processing file', error: stderr });
+        res.status(500).json({ message: 'Error processing file', error: stderr.trim() });
         return;
       }
 
       try {
+        // Parse the JSON output from the Python script
         const parsedData = JSON.parse(stdout);
 
         if (!parsedData.success) {
@@ -51,7 +52,9 @@ export const uploadResume = async (req: Request, res: Response): Promise<void> =
           skills: Array.isArray(parsedData.data.skills) ? parsedData.data.skills : [parsedData.data.skills],
           yearsOfExperience: parseFloat(parsedData.data.yearsOfExperience) || 0,
           designation: parsedData.data.designation,
-          previousCompany: Array.isArray(parsedData.data.previousCompany) ? parsedData.data.previousCompany : [parsedData.data.previousCompany],
+          previousCompany: Array.isArray(parsedData.data.previousCompany)
+            ? parsedData.data.previousCompany
+            : [parsedData.data.previousCompany],
         });
 
         // Save to the database
